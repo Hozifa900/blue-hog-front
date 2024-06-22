@@ -1,5 +1,6 @@
 import { Col, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { statistics } from "../../../../services";
 import cart from "../../../../assets/cart.png";
 import { scrollToCart } from "../../../../helper/scrolling";
 
@@ -7,6 +8,7 @@ export default function ProductItem({ img, name, price, productId }: any) {
   const dispatch = useDispatch();
 
   const addToCar = () => {
+    statistics.addWbsiteViewStatistics("add-to-cart");
     scrollToCart();
     dispatch({
       type: "ADD_TO_CART",

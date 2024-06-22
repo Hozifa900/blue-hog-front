@@ -15,9 +15,15 @@ export default function Hero() {
       videoRef.current.play();
     }
     setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+    }, 1000);
+
+    setTimeout(() => {
       if (titleRef.current) {
         if (window.innerWidth <= 768) {
-          titleRef.current.style.top = "200px";
+          titleRef.current.style.top = "250px";
           titleRef.current.style.right = "0px";
         } else {
           titleRef.current.style.top = "300px";
@@ -27,7 +33,7 @@ export default function Hero() {
       if (imgRef.current) {
         if (window.innerWidth <= 768) {
           imgRef.current.style.top = "300px";
-          imgRef.current.style.left = "-60px";
+          imgRef.current.style.left = "-30px";
         } else {
           imgRef.current.style.top = "300px";
           imgRef.current.style.left = "-150px";

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { interfaces, actionType } from "../../store";
 import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
+import { statistics } from "../../services";
 
 import "./Header.css";
 import cart from "../../assets/trolley.png";
@@ -20,7 +21,7 @@ export default function Header() {
     let cart, user;
     const cashedCart = localStorage.getItem("cart");
     const cashedUser = localStorage.getItem("blues-user");
-    console.log("the cashed user is: ", cashedUser);
+
     if (cashedCart != null) {
       cart = JSON.parse(cashedCart);
       dispatch({ type: actionType.REPLACE_CART, payload: cart });
@@ -29,6 +30,8 @@ export default function Header() {
       user = JSON.parse(cashedUser);
       dispatch({ type: actionType.REPLACE_USER, payload: user });
     }
+
+    statistics.addWbsiteViewStatistics("view");
   }, []);
 
   return (

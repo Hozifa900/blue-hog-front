@@ -1,6 +1,5 @@
 import { Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { interfaces } from "../../../store";
+import { useDispatch } from "react-redux";
 import minus from "../../../assets/minus.png";
 import plus from "../../../assets/plus.png";
 import "./CartItem.css";

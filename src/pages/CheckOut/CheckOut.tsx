@@ -4,11 +4,7 @@ import EMPTY_CATR from "../../assets/empty.json";
 import Lottie from "lottie-react";
 import { interfaces } from "../../store";
 import { useForm } from "react-hook-form";
-// import img2 from "../../assets/2.png";
-// import img3 from "../../assets/3.png";
-// import img4 from "../../assets/4.png";
-// import img5 from "../../assets/5.png";
-// import img6 from "../../assets/6.png";
+import { statistics } from "../../services";
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./CartItem/CartItem";
 import "./CheckOut.css";
@@ -28,6 +24,7 @@ export default function CheckOut() {
   } = useForm();
 
   const onSubmit = (data: any) => {
+    statistics.addWbsiteViewStatistics("proceed-to-checkout");
     if (cartItems.length > 0) {
       dispatch({ type: "ADD_USER", payload: data });
       localStorage.setItem("user", JSON.stringify(user));
@@ -41,7 +38,7 @@ export default function CheckOut() {
     <div id="cart">
       <Container>
         <h3>
-          Shopping Cart: <i>Free shipping special for you</i>
+          Shopping Cart: <i>Free shipping special for you [3-7 days]</i>
         </h3>
         <hr />
         <Row>
@@ -78,7 +75,7 @@ export default function CheckOut() {
               </span>
             </div>
           </Col>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={4} style={{ marginBottom: "50px" }}>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <InputGroup className="mb-3">
                 <InputGroup.Text id="basic-addon1" style={{ width: "90px" }}>

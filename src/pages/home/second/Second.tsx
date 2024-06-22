@@ -1,7 +1,12 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { scrollToProduct } from "../../../helper/scrolling";
+import { statistics } from "../../../services";
 import "./Second.css";
 export default function Second() {
+  const handleStatistics = () => {
+    scrollToProduct();
+    statistics.addWbsiteViewStatistics("order-now");
+  };
   return (
     <div className="second">
       <Container>
@@ -14,7 +19,7 @@ export default function Second() {
             <Button
               variant="success"
               className="second-button"
-              onClick={scrollToProduct}
+              onClick={handleStatistics}
             >
               Order Now
             </Button>

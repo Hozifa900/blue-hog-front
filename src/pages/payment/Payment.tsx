@@ -27,7 +27,7 @@ export default function Payment() {
   const navigate = useNavigate();
 
   function onApprove(data: any) {
-    return fetch(`http://localhost:8888/api/orders/${data.orderID}/capture`, {
+    return fetch(`https://zane-o.com/api/orders/${data.orderID}/capture`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,9 +51,9 @@ export default function Payment() {
             orderItems: cart,
             user: user,
           })
-          .then((data) => {
+          .then(() => {
             setMessage(
-              `Your order saved in our database. you will get your shipping from 2 to 5 days, Thank you ^_^`
+              `Your order saved in our database. you will get your shipping in 3-7 days, Thank you ^_^`
             );
             setShow(true);
             setTimeout(() => {
@@ -63,10 +63,10 @@ export default function Payment() {
               navigate("/");
             }, 3000);
           })
-          .catch((e) => {
+          .catch(() => {
             setTimeout(() => {
               setMessage(
-                `Something went wrong while we storing you order. We will contact you throw your payment info. We will be happy if you call as on 3479863996, Thank you ^_^`
+                `The payment collected. But something went wrong while we storing your order. We will contact you throw your payment info. We will be happy if you call as on 3479863996, Thank you ^_^`
               );
               setShow(true);
             }, 3100);
@@ -74,7 +74,7 @@ export default function Payment() {
 
         console.log("this is order data: ", orderData);
       })
-      .catch((e) => {
+      .catch(() => {
         window.location.href = "/";
         alert("Something wrong, try again!");
       });
@@ -84,7 +84,7 @@ export default function Payment() {
       <PayPalScriptProvider
         options={{
           clientId:
-            "AVcU894oyMmN2JHnhg9uGwTvbgyMQ3jLjbwbIDwWsn_X7Sk-oxO_yx6RaFY_3EcG1CFZhhVzV4FHdNG-",
+            "AX9kPrdSief_D7wbUVDQAq8uNBk6TpmQREH36KUTX5MEd0GQbl7NUHziptdqovbXF8uZlwk9BnhhdXeY",
         }}
       >
         <br />
